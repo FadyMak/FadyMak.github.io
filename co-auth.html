@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cross Origin Authentication</title>
+  <script src="https://cdn.auth0.com/js/lock/11.17.2/lock.min.js"></script>
+</head>
+
+<body>
+  <button id="auth-btn">CO Auth</button>
+  <script>
+    const clientId = 'rKQZnMpL1e1gKThouwqjDgao0Mg31xmj';
+    const domain = 'canary-auth0.fadymak.com';
+    const lock = new Auth0Lock(clientId, domain, {
+      configurationBaseUrl: 'https://cdn.au.auth0.com'
+    });
+
+    lock.on('authenticated', function (authResult) {
+      console.log(authResult);
+    });
+
+    document.getElementById('auth-btn').addEventListener('click', function () {
+      lock.show();
+    });
+  </script>
+</body>
+
+</html>
